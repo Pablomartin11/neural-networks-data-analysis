@@ -1,0 +1,281 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor, colortbl}
+\usepackage{tabularx} % Para tablas con ancho automático
+\usepackage{adjustbox} % Para ajustar la tabla
+\usepackage[margin=2cm]{geometry} % Modifica los márgenes de la página
+\usepackage{hyperref}
+
+
+\renewcommand{\contentsname}{Índice}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    
+    \vspace{1cm}
+    {\scshape\LARGE Universidad de Valladolid \par}
+    \vspace{1.5cm}
+    {\huge\bfseries Práctica 7 - TAA\par}
+    \vspace{0.5cm}
+    {\Large\itshape Pablo Martín de Benito\par}
+    \vspace{1.5cm}
+	\tableofcontents
+    \vfill
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+
+\newpage % Salto de página antes del contenido del documento
+
+\section{Ejercicio 1 }
+
+\begin{table}[h]
+	\begin{adjustbox}{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			  & \textbf{$X_1$} & \textbf{$X_2$} & \textbf{$X_3$} & \textbf{$X_4$} & \textbf{$P(Y)$}  \\ \hline
+			
+			\textbf{$Y_1$} & 2/16 & 1/16 & 1/16 & 1/16 & 5/16 \\ \hline
+			
+			\textbf{$Y_2$} & 1/16 & 2/16 & 2/16 & 1/16 & 6/16 \\ \hline
+			
+			\textbf{$Y_3$} & 1/16 & 1/16 & 1/16 & 0 & 3/16 \\ \hline
+			
+			\textbf{$Y_4$} & 0 & 2/16 & 0 & 0 & 2/16 \\ \hline
+			
+			\textbf{$P(X)$} & 4/16 & 6/16 & 4/16 & 2/16 & 1 \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+
+\hspace{0.5cm} \textbf{a.} \hspace{0.5cm} ¿Cumple la distribución conjunta las propiedades de una distribución de probabilidades? \\ 
+
+\hspace{1.5cm}Si la cumple porque todas las probabilidades suman uno y están en el intervalo [0,1].
+
+\vspace{1cm}
+
+\hspace{0.5cm} \textbf{c.} \hspace{0.5cm} ¿Cuál es la probabilidad de $P(X = x) \quad y \quad P(Y = y)$? \\ 
+
+$$P(X = x) = 4/16 X_1 + 6/16 X_2 + 4/16 X_3 + 2/16 X_4 $$ \\
+$$P(Y = y) = 5/16 Y_1 + 6/16 Y_2 + 3/16 Y_3 + 2/16 Y_4 $$ 
+
+\vspace{1cm}
+
+\hspace{0.5cm} \textbf{b.} \hspace{0.5cm}  ¿Cuál es la probabilidad de $P(X = x_1)$?
+
+$$P(X = x_1) = 4/16 X_1 $$ 
+
+\vspace{1cm}
+
+\hspace{0.5cm} \textbf{d.} \hspace{0.5cm} ¿Verifican las distribuciones marginales las propiedades de una distribución de probabilidades? \\
+
+\hspace{1.5cm} Si se verifica porque las probabilidades suman uno.
+
+\newpage
+
+\section{Ejercicio 2}
+
+\textbf{Utilizando el conjunto de datos weather.nominal.practica que se proporciona, determinar la clasificación Naive Bayes de las siguientes instancias, utilizando la estimación de máxima
+verosimilitud (frecuencial) y sin utilizar ninguna herramienta de minería de datos:}
+\vspace{1cm}
+
+Obtenemos las siguientes probabilidades del archivo de datos, que serán de utilidad más adelante.\\
+
+\hspace{1cm} $P(play = yes) = 9/14$\\
+
+\hspace{1cm} $P(play = no) = 5/14$ \\
+
+\vspace{0.5cm}
+
+\hspace{1cm} $P(outlook = sunny / play = yes) = 2/9 $ \\
+
+\hspace{1cm} $P(outlook = sunny / play = no) =  3/5$ \\
+
+\hspace{1cm} $P(outlook = overcast / play = yes) =  2/9$ \\
+
+\hspace{1cm} $P(outlook = overcast / play = no) = 0 \quad {\rightarrow}\quad  Estimacion  Bayesiana = \frac{1}{5+3}=1/8$ \\
+
+\hspace{1cm} $P(temperature = cool / play = yes) = 5/9 $ \\
+
+\hspace{1cm} $P(temperature = cool  / play = no) = 1/5 $ \\
+
+\hspace{1cm} $P(temperature = hot / play = yes) =  0 \quad \rightarrow \quad  Estimacion Bayesiana = \frac{1}{9+3} = 1/12$ \\
+
+\hspace{1cm} $P(temperature = hot  / play = no) = 1/5 $ \\
+
+\hspace{1cm} $P(humidity = normal / play = yes) = 6/9$ \\
+
+\hspace{1cm} $P(humidity = normal / play = no) = 1/5 $ \\
+
+\hspace{1cm} $P(humidity = high / play = yes) = 3/9$ \\
+
+\hspace{1cm} $P(humidity = high / play = no) = 4/5 $ \\
+
+\hspace{1cm} $P(windy = FALSE / play = yes) = 5/9 $ \\
+
+\hspace{1cm} $P(windy = FALSE / play = no) = 2/5 $ \\
+
+\hspace{1cm} $P(windy = TRUE / play = yes) = 3/9 $ \\
+
+\hspace{1cm} $P(windy = TRUE / play = no) = 3/5$ \\
+
+
+
+\newpage
+
+\hspace{0.5cm} \subsection{a)} \hspace{0.5cm} $X_1 <sunny, cool, normal, false>$ \\
+
+$P(play = yes | <sunny, cool, normal, false>) = p(yes) p(sunny/yes) p(cool/yes) p(normal/yes) p(false/yes) = $ \\
+
+\hspace{1.5cm}$ 9/14 * 2/9 * 5/9 * 6/9 = 0.05291005291 $ \\
+
+$P(play = no | <sunny, cool, normal, false>) = p(no) p(sunny/no) p(cool/no) p(normal/no) p(false/no) = $ \\
+
+\hspace{1.5cm}$5/14 * 3/5 * 1/5 * 1/5 * 2/5 = 0.00342857142 $ \\
+
+
+
+\vspace{0.5cm}
+
+\hspace{0.5cm} \subsection{b)} \hspace{0.5cm} $X_2 <	overcast, hot, high, true>$ \\
+
+$P(play = yes | <overcast,hot,high,true>) = p(yes) p(ovecast/yes) p(hot/yes) p(high/yes) p(true,yes) = $ \\
+
+\hspace{1.5cm}$9/14 * 2/9 * 1/12 * 3/9 * 3/9 = 0.00132275132$ \\ 
+
+$P(play = no | <overcast,hot,high,true>) = p(no) p(ovecast/no) p(hot/no) p(high/no) p(true,no) = $ \\
+
+\hspace{1.5cm}$5/14 * 1/8 * 1/5 * 4/5 * 3/5 = 0.00428571428$ \\ 
+
+
+\newpage
+
+\section{Ejercicio 3}
+
+\textbf{Utilizando Weka y el clasificador Naive Bayes determinar la clasificación de los ejemplos anteriores:} \\
+
+Al utilizar el clasificador Naive Bayes con Weka obtenemos los siguientes resultado:\\
+
+\begin{verbatim}
+=== Classifier model (full training set) === 
+
+Naive Bayes Classifier 
+
+                Class 
+Attribute		yes     no 
+               (0.63) (0.38) 
+============================= 
+outlook 
+  sunny            3.0    4.0 
+  overcast         3.0    1.0 
+  rainy            6.0    3.0 
+  total         12.0    8.0 
+
+temperature 
+  hot              1.0    3.0 
+  mild             5.0    3.0 
+  cool             6.0    2.0 
+  total         12.0    8.0 
+
+humidity 
+  high             4.0    5.0 
+  normal           7.0    2.0 
+  total         11.0    7.0 
+
+windy 
+  TRUE             5.0    4.0 
+  FALSE            6.0    3.0 
+  total         11.0    7.0 
+\end{verbatim}  
+  
+Como podemos ver, las estimaciones de las probabilidades no son las mismas que en el ejercicio anterior, esto es porque Weka, al detectar que una probabilidad requiere del cálculo de la estimación bayesiana, la utiliza para todas las probabilidades. \\
+
+\begin{verbatim}
+	Correctly Classified Instances           0                0%
+
+	Incorrectly Classified Instances         2              100%  
+\end{verbatim}  
+
+Donde podemos darnos cuenta de que no las clasifica bien dichas instancias. \\
+
+\newpage
+
+\section{Ejercicio 4}
+
+\textbf{Entrenar, con Weka, un clasificador Naive Bayes para el conjunto de datos
+weather.nominal.practica}
+
+\vspace{1cm}
+
+\subsection{Estimar la tasa de error cometida por el clasificador utilizando validación cruzada de 10 particiones}
+
+	\hspace{1cm}Incorrectly Classified Instances         \hspace{0.5cm} 6  \hspace{0.5cm}             42.8571 \% 
+	
+\vspace{1cm}
+	
+\subsection{Examinar la salida proporcionada por el Explorer y determinar cómo está estimando
+esta implementación de Naive Bayes los parámetros del clasificador.}
+
+\hspace{1cm} Como hemos explicado en el ejercicio anterior, la estimación de las probabilidades que efectua Naive Bayes es la estimación Bayesiana que viene dada por la siguiente fórmula: \\
+
+$$ p'(a_i | v_j) = \frac{n_c + mp}{n + m}$$ \\
+
+n: número de ejemplos de entrenamiento con clase $v_j$\\
+
+nc: nº ejemplos clase $v_j$ con valor $a_i$ para el atributo a.\\
+
+p: estimación a priori de $p'(a_i | v_j)$ \\
+
+m: peso de la estimación a priori (nº de ejemplos virtuales)\\
+
+
+
+\newpage
+
+\section{Ejercicio 5}
+
+\textbf{El conjunto de datos weather.nominalX6 se ha generado repitiendo cada instancia del
+conjunto weather.nominal.practica seis veces. Entrenar con Weka un clasificador Naive
+Bayes para este conjunto de datos:}
+
+\vspace{1cm}
+
+\subsection{Estimar la tasa de error cometida por el clasificador utilizando validación cruzada de 10 particiones.}
+
+\hspace{1cm} Incorrectly Classified Instances   \hspace{0.5cm}     13         \hspace{0.5cm}      15.4762 \%
+
+\vspace{1cm}
+
+\subsection{Compare esta tasa de error con la estimada en el ejercicio anterior y discuta los
+resultados.}
+
+\hspace{1cm}Al aumentar el número de instancias, como es evidente, obtenemos una menor tasa de error y por lo tanto un mejor clasificador
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
